@@ -1,0 +1,66 @@
+<?PHP
+
+	ERROR_REPORTING(0);
+
+	//PREREQUISITE VARIABLES FOR THE SessionValidate.php PAGE
+	$REDIRECT_PATH = "";
+	$MY_PAGE_SET = TRUE;
+	$LOGIN_PAGE_SET = FALSE;
+	$LOGIN_REQUIRED = FALSE;
+
+	//THIS SCRIPT VALIDATES THE CURRENT SESSION
+	include('../includes/SessionValidate.php');
+
+	//CONNECT SCRIPT FOR DATABASE ACCESS
+	include '../includes/ServerConnect.php';
+	
+?>
+
+
+<html style="text-align: center;  height: 100%; width: 100%; overflow: hidden;">
+
+	<title>Build Version | Librorum </title>
+	<link href="../css/MainSheetCSS.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/AnimateCSS.css" rel="stylesheet" type="text/css"/>
+	
+	<style>
+		#canvas {
+		position: absolute;
+		left: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%; 
+	}
+	
+	#front {
+		width: 100%; 
+		position: relative; 
+		z-index: 1;
+	}
+	
+	div.spacer {
+		width: 100%; 
+		height: 0px;
+	}
+	
+	</style>
+	
+	<canvas id = "canvas"></canvas>
+	
+	<script type="text/javascript" src="../includes/jquery.min.js"></script>
+	<script type="text/javascript" src="../about/background.js"></script>
+	
+	<div class="SPACER-40"></div>
+	<div class="SPACER-30"></div>
+	<div class="SPACER-20"></div>
+	
+	<div id='front' class='animated fadeInUp'>
+		<div id='spacer'></div>
+
+	<text style="font-size: 50px; color: #333;">Librorum Build Version:</text><br>
+	<text style="font-size: 140px; color: White;">3.8.03</text><br>
+	<text style="font-size: 30px; color: #333;">Date & Time: <b>02-06-2015 12:41 PM(IST)</b></text><br>
+	<text style="font-size: 30px; color: #333;">Signed By: <b>Mayank Bansal</b></text>
+	</div>
+</html>
+

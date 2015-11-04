@@ -1,0 +1,207 @@
+
+
+<?php 
+
+if(isset($LIBRARY_PAGE) && $LIBRARY_PAGE==FALSE)
+{
+
+}else
+{
+
+Print "
+
+<hr class='white'>
+<div class='SPACER-10'></div>	
+
+<div class='LIBRARY-TAG-CONTAINER' style='box-shadow: 0px 0px 20px rgba(0,0,0,0.3);'>";
+	
+		$query = "SELECT * FROM sub_categories";
+		$result = mysql_query($query);
+		
+		while($row = mysql_fetch_array($result))
+		{
+			$CATEGORY_TITLE = $row['SUB_CATEGORY'];
+			
+			print	"
+					<div class='LIBRARY-TAGS'>
+						<a href='filter.php?ITEM_FILTER=".urlencode($CATEGORY_TITLE)."' 
+						<text style='font-size: 13px;'>".$CATEGORY_TITLE."</text>
+						</a>
+					</div>
+				
+
+				";
+		}
+		
+Print "
+</div>";
+}
+
+?>
+
+<div class="FOOTER-MENU" style='box-shadow: 0px 0px 10px rgba(0,0,0,1);'>
+	
+	<div style="min-width: 1200px; width: 1200px; margin: 0 auto; float: top; height: 150px; text-align: center; ">
+	
+		<div style="width: 292.5px; margin: 0 auto; float: left; height: 150px; text-align: center;">
+			
+			<br>
+			
+			<div class="SPACER-2"></div>
+			
+			<text style="font-size: 18px;">
+				<a href="../gamma/">Home Page</a>
+				<div class="SPACER-5"></div>
+				<a href="../about/">About Us</a><br>
+				<div class="SPACER-5"></div>
+				<a href="#">How It Works</a><br>
+				<div class="SPACER-5"></div>
+				<a href="../library/">Browse Library</a><br>
+				<div class="SPACER-5"></div>
+				<a href="../about/contact.php">Contact Us</a>
+			</text>
+			<br>
+		</div>
+		
+		<div style="width: 292.5px; margin: 0 auto;  float: left; margin-left: 10px; height: 150px; text-align: center;">
+			<br>
+			<div class="SPACER-2"></div>
+			<text style="font-size: 18px;">
+				<a href="../accounts/login.php">Login</a><br>
+				<div class="SPACER-5"></div>
+				<a href="../accounts/register.php">Register</a><br>
+				<div class="SPACER-5"></div>
+				<a href="../dashboard/help.php">Help & FAQs</a><br>
+				<div class="SPACER-5"></div>
+				<a href="#">Collaborate With Us</a><br>
+				<div class="SPACER-5"></div>
+				<a href="#">Donate To Librorum</a>
+			</text>
+			<br>
+		</div>
+		
+		<div style="width: 292.5px; margin: 0 auto; float: left; margin-left: 10px; height: 150px; text-align: center;">
+			<br>
+			<div class="SPACER-2"></div>
+			<text style="font-size: 18px;"><a href="#">Our Blog</a><br>
+			<div class="SPACER-5"></div>
+			<a href="#">Press & Librorum</a><br>
+			<div class="SPACER-5"></div>
+			<a href="#">Website Feedback</a><br>
+			<div class="SPACER-5"></div>
+			<a href="#">Report Issues</a><br>
+			<div class="SPACER-5"></div>
+			<a href="../about/developers.php">Developers & Credits</a></text><br>
+		</div>
+		
+		<div style="width: 292.5px; margin: 0 auto; float: left; margin-left: 10px; height: 145px; padding-top: 25px; text-align: center;">
+			<style>
+			.list-unstyled {
+	padding-left: 0px;
+	list-style: none;
+}
+.list-inline li {
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+.social-icons .fa {
+	font-size: 1.5em;
+}
+/*Change icons circle size and color here*/
+.social-icons .fa {
+	width:38px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	color: #FFF;
+	color: rgba(255, 255, 255, 0.8);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.social-icons.icon-circle .fa{ 
+	border-radius: 5px;
+}
+
+.social-icons .fa-facebook,.social-icons .fa-facebook-square{background-color:#3C599F;}  
+
+.social-icons .fa-google-plus,.social-icons .fa-google-plus-square{background-color:#CF3D2E;} 
+
+.social-icons .fa-instagram{background-color:#A1755C;}
+
+.social-icons .fa-twitter,.social-icons .fa-twitter-square{background-color:#32CCFE;} 
+
+.social-icons .fa-youtube,.social-icons .fa-youtube-play,.social-icons .fa-youtube-square{background-color:#C52F30;}
+
+.social-icons.icon-zoom .fa:hover, .social-icons.icon-zoom .fa:active { 
+ 	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1); 
+}
+</style>
+			<div style="width: 282.5px; margin: 0 auto; float: left; margin-left: 10px; margin-top: -15px;  margin-bottom: 15px; height: 55px; text-align: center;">
+
+				<ul class="social-icons icon-circle icon-zoom list-unstyled list-inline">
+				<a href="http://www.facebook.com/GoLibrorum"><i  class="button fa fa-facebook"></i>&nbsp;</a>
+				<a href="http://www.twitter.com/GoLibrorum"><i  class="button fa fa-twitter"></i>&nbsp;</a>
+				<i  class="button fa fa-instagram"></i>&nbsp;
+				<a href="https://plus.google.com/+LibrorumIn/about"><i class="button fa fa-google-plus"></i>&nbsp;</a>
+				<i  class="button fa fa-youtube"></i>
+				</ul>
+
+			</div>
+			
+			<div style="width: 282.5px; margin: 0 auto; float: left; margin-left: 10px; overflow: hidden; height: 85px; text-align: center;">
+				<a href="#"><img src="../images/logos/logo4.png" style="width: 105px; height: 85px; float: left; margin-left: 26.25px; "></a>
+				<a href="http://www.sadgi.in"><img src="../images/logos/Sadgi.png" style="margin-top: 0px; width: 100px; height: 90px; margin-left: 10px; float: left;"></a>
+			</div>
+			
+		</div>
+	
+	</div>
+
+	
+</div>
+
+
+
+<div class="SPACER-40" style="background: #DDD;box-shadow: 0px 0px 50px rgba(0,0,0,1); width: 100%; min-width: 1200px;  height: 60px; padding-top: 10px;">
+	
+	<div style=" min-width: 1200px; width: 1200px; margin: 0 auto;  float-top; height: 50px; text-align: center;">
+		
+		<div style="width: 292.5px; margin: 0 auto; float: left; height: 30px; padding-top: 20px; text-align: center;">
+			<span id="privacy" style="cursor: pointer;"><text style="font-size: 16px; color: #444;"><i class="fa fa-file-text-o"></i> &nbsp; PRIVACY POLICY &nbsp;&nbsp;&nbsp;</text></span>
+			<text style="font-size: 16px; color: #444;">&nbsp;<i class="fa fa-question"></i>&nbsp;&nbsp; HELP</text>			
+		</div>
+		
+		<div style="width: 595px; margin: 0 auto; padding-top: 5px; float: left; height: 45px; margin-left: 10px; text-align: center;">
+			<text style="font-size: 16px; color: #444;">Handmade with &hearts; in Namma Bengaluru</text><br>
+			<text style="font-size: 18px; color: #444;">MMXV &copy; Copyright Librorum. All Rights Reserved.</text>
+		</div>
+		
+		<div style="width: 292.5px; margin: 0 auto; float: left; height: 30px; padding-top: 20px; margin-left: 10px; text-align: center;">
+			<text style="font-size: 16px; color: #444;"><i class="fa fa-sitemap"></i>&nbsp;&nbsp;SITE MAP &nbsp;&nbsp;&nbsp;</text>
+			<span id="tos" style="cursor: pointer;"><text style="font-size: 16px; color: #444;">&nbsp;<i class="fa fa-file-text"></i>&nbsp;&nbsp; TERMS OF SERVICE</text></span>
+		</div>
+		
+		<script>
+		$("#tos").click(function()
+		{
+			window.open('https://docs.google.com/document/d/1tAH0MzfUdUBR57tiMFzSX0ZAyAxWKpW4dTeGFEoXOkE/edit?usp=sharing', '_blank');
+		});
+		$("#privacy").click(function()
+		{
+			window.open('https://docs.google.com/document/d/1tAH0MzfUdUBR57tiMFzSX0ZAyAxWKpW4dTeGFEoXOkE/edit?usp=sharing', '_blank');
+		});
+		</script>
+			
+	</div>
+</div>

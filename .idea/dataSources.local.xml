@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - librorum@localhost" uuid="7340e710-93c6-4fef-b947-1d8c4f4afc08">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>librorum.*</schema-pattern>
+      <default-schemas>librorum.*</default-schemas>
+    </data-source>
+  </component>
+</project>
+

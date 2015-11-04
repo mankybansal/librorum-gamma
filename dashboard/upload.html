@@ -1,0 +1,57 @@
+
+<script type="text/javascript">
+function performClick(node) {
+   var evt = document.createEvent("MouseEvents");
+   evt.initEvent("click", true, false);
+   node.dispatchEvent(evt);
+}
+
+$('#thFile').change(function() {
+  $('#myForm').submit();
+});
+
+</script>
+
+<form id="myForm" action="upload.php" method="post" enctype="multipart/form-data">
+     <input style="display: none;" type="file" id="theFile" size="60" name="myfile">
+	 <a href="#" onclick="performClick(document.getElementById('theFile'));">+</a>
+     <input type="submit" value="Ajax File Upload">
+</form>
+
+    
+<div id="message"></div>
+
+
+<script>
+$(document).ready(function()
+{
+
+	var options = { 
+    beforeSend: function() 
+    {
+		//DO NOTHING
+    },
+    uploadProgress: function() 
+    {
+		//DO NOTHING
+    },
+    success: function() 
+    {
+		//DO NOTHING
+    },
+	complete: function(response) 
+	{
+		//DO NOTHING
+	},
+	error: function()
+	{
+		//DO NOTHING
+	}
+     
+}; 
+
+    $("#myForm").ajaxForm(options);
+
+});
+
+</script>

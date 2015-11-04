@@ -1,0 +1,265 @@
+<html>
+
+	<link href="../css/FontAwesomeCSS.css" rel="stylesheet" type="text/css"/>
+	<style>
+	html, body {
+		width: 100%;
+		height: 100%;
+		background: #300924;
+		color: white;
+		font-family: consolas;
+		font-size: 17px;
+		margin: 0;
+
+		box-sizing: border-box;
+		border: 0;
+		  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	}
+	
+	
+	
+	body {
+	
+			padding: 50px;
+	}
+	
+	#typed-cursor {
+	  font-weight: 100;
+    font-size: 30px;
+    color: white;
+	}
+
+#typed-cursor.blinking {
+  -webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+	from,to {
+	color: transparent;
+}
+ 50% {
+    color: white;
+ }
+
+}
+
+@-moz-keyframes blink {
+	from,to {
+	color: transparent;
+}
+ 50% {
+   color: white;
+ }
+
+}
+
+@-webkit-keyframes "blink" {
+	from,to {
+	color: transparent;
+}
+ 50% {
+   color: white;
+ }
+
+}
+
+@-ms-keyframes "blink" {
+	from,to {
+	color: transparent;
+}
+ 50% {
+   color: white;
+ }
+
+}
+
+@-o-keyframes "blink" {
+	from,to {
+	color: transparent;
+}
+ 50% {
+   color: white;
+ }
+}
+
+	</style>
+	<script type="text/javascript" src="../includes/jquery.min.js"></script>
+
+	<script>
+$(document).keypress(function(e)
+{
+	var key = String.fromCharCode(e.which);
+	$("#command").append( key);
+ 
+});
+
+
+$(document).on('keydown', function(e){
+    if(e.keyCode === 8){
+		    e.preventDefault();
+	   $('#command').text($('#command').html().substring(0,$('#command').html().length - 1));
+
+	   
+    }
+});
+
+var username, password;
+var login = false;
+
+$(document).keypress(function(e) {
+   
+
+   if(e.which == 13) {
+   
+  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+
+	    var commandText  = $('#command').html().trim();
+	    var command = $('#command').html().trim().toLowerCase();
+		var location = $('#location').html().trim();
+		
+		
+		var expression = command;
+		var keyword = expression.substr(0, expression.indexOf(" "));
+		expression = expression.substr(expression.indexOf(" "));
+		
+		if(location === "" && command === "exit")
+		{
+			 $('#command').text('');
+			 login = false;
+		}
+		else if(command ==="")
+		{
+			 $('#command').text('');
+		}
+		else
+		{
+		
+			  $('#history').append( location + "> " +commandText+ "<br/>");
+			   $('#command').text('');
+			   
+			  
+			  if( command === "exit")
+			  {
+				   $('#location').text('');
+				   			 login = false;
+			  }
+			  else if(command === "help")
+			  {
+				$('#history').append("<br/><b>Librorum Terminal Help</b><br/>&nbsp;&nbsp;List of commands:<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>ECHO:</b> prints the given string.<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>SET:</b> sets the value of a setting.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>-bgcolor</b> | changes the background color of the terminal. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: -black, -blue, -purple, -orange, -green<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>EXIT:</b> quits the current application/directory.<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>REFRESH:</b> Clears all the history of the terminal.<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>HELP:</b> lists the available commands the terminal accepts.<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>LOGIN:</b> signs in to a particular user.<br><br>"); 
+			  }   
+			  else if(keyword === "set"  || command === "set")
+			  {
+
+					var set =  command.split(' ')[ 1 ];
+					var setting = command.split(' ')[ 2 ];
+
+					var colors = ["-black", "-blue", "-green", "-purple", "-orange"];
+					var hex = ["#000", "#0000A8", "#006600", "#300924", "#DD4814"];
+					if(set === "-bgcolor")
+					{
+						if($.inArray(setting, colors)!=-1)
+						{
+							if(login == true)
+							{
+								var color =  hex[$.inArray(setting, colors)] ;
+								$("html").css('background-color',  color);
+								$("body").css('background-color',  color);
+								$('#history').append('<b>BACKGROUND COLOR CHANGED TO <b>' +  setting.substring(1).toUpperCase() +'</b>.<br><br>');
+							}else{
+								$('#history').append('<b>YOU DO NOT HAVE PERMISSION</b>.<br><br>');
+							}
+								
+						}else
+						{
+							$('#history').append('<b>'+setting+'</b> is an invalid color.<br>');
+						}
+					}
+					else
+					{
+							$('#history').append('Syntax error / invalid setting in <b>SET</b>.<br><b>SET</b> syntax:  set -setting -attribute<br><br>');
+					}
+   			 }  
+			  else if(command === "login" && login==false && location === "")
+			  {
+				 $('#location').append('login/username');
+			  } 
+			  else if(command === "login" && login==true)
+			  {
+				$('#history').append('You are already logged in as <b>' + username +'@librorum</b>.<br><br>');
+			  }  
+			  else if(command === "refresh")
+			  {
+				login= false;
+				$("html").css('background-color', '#300924');
+				$("body").css('background-color', '#300924');
+				$('#history').text('');
+				$('#location').text('');
+			  } 
+			  else if(keyword === "echo" || command === "echo")
+			  {	
+					if(expression.slice(1, 2) === "'" &&  expression.substr(expression.length-1)   === "'"){
+					
+					var text = expression.substring(2, expression.length-1);
+					$('#history').append("<b>"+text+"</b><br><br>");
+					}
+					else
+					{
+									$('#history').append("Syntax error in <b>echo</b>.<br><b>ECHO</b> syntax:  echo 'text goes here'<br><br>" );
+					}
+			  } 
+			  else if(location === "login/username")
+			  {
+				username  = command;
+				 $('#location').text('').append('login/password');
+			  }
+			  else if(location === "login/password")
+			  {
+				 password  = command;
+			 
+				 if(username === "root" && password === "librorum")
+				 {
+						$('#history').append("<b>LOGIN SUCCESSFUL.</b><br><br>");
+						$('#location').text('').append(username + "@librorum");
+						login = true;
+				 }
+				 else
+				 {
+					$('#location').text('login/username');
+					$('#history').append("<b>ACCESS DENIED.</b><br><br>");
+				 }
+				 $('#command').text('');
+			  }
+			  else
+			  {
+				$('#history').append("<b>" + commandText + "</b> isn't a valid command.<br><br>" );
+			  }
+		 }
+		  
+		  
+	}
+});
+
+
+</script>
+	
+
+	<body>
+	<text style='font-size: 30px; font-family: calibri;'>Librorum Developer Teminal &nbsp;<i class="fa fa-code"></i></text>
+	<br>
+	<br>
+	<div id="history">
+	</div>
+	<div id="enter-line"><span id="location"></span>>&nbsp;<text id="command"></text><span id="typed-cursor" class="blinking">_</span></div>
+	
+	</body>
+
+</html>

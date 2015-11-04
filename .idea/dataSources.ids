@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - librorum@localhost" uuid="7340e710-93c6-4fef-b947-1d8c4f4afc08">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="librorum"/>
+    <table name="admin_group_relation" schema="" catalog="librorum" type="TABLE">
+      <column name="RELATION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ADMIN_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="RELATION_ID"/>
+      <index name="RELATION_ID_UNIQUE" unique="true" columns="RELATION_ID"/>
+    </table>
+    <table name="borrow_history" schema="" catalog="librorum" type="TABLE">
+      <column name="HISTORY_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="BORROWER_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ITEM_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BORROW_DATE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RETURN_DATE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="HISTORY_ID"/>
+      <index name="HISTORY_ID_UNIQUE" unique="true" columns="HISTORY_ID"/>
+    </table>
+    <table name="borrowed" schema="" catalog="librorum" type="TABLE">
+      <column name="BORROW_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ITEM_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BORROWER_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="RETURN_TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="BORROW_ID"/>
+      <index name="BORROW_ID_UNIQUE" unique="true" columns="BORROW_ID"/>
+    </table>
+    <table name="credits" schema="" catalog="librorum" type="TABLE">
+      <column name="ACCOUNT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CREDITS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MjAw"/>
+      <primary-key name="PRIMARY" columns="ACCOUNT_ID"/>
+      <index name="ACCOUNT_ID_UNIQUE" unique="true" columns="ACCOUNT_ID"/>
+    </table>
+    <table name="groups" schema="" catalog="librorum" type="TABLE">
+      <column name="GROUP_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="GROUP_NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CITY" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="STATE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="COUNTRY" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TIMEZONE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PH_CODE" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="GROUP_ID"/>
+      <index name="GROUP_ID_UNIQUE" unique="true" columns="GROUP_ID"/>
+    </table>
+    <table name="items" schema="" catalog="librorum" type="TABLE">
+      <column name="ITEM_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ITEM_INFO_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OWNER_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BORROW_COUNT" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="STATUS" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="J0FWQUlMQUJMRSc="/>
+      <column name="DATE_ADDED" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="ITEM_ID"/>
+      <index name="ITEM_ID_UNIQUE" unique="true" columns="ITEM_ID"/>
+    </table>
+    <table name="main_categories" schema="" catalog="librorum" type="TABLE">
+      <column name="CATEGORY_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CATEGORY_MAIN_TITLE" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CATEGORY_COLOR" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REQ_CREDITS" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="GTU_CREDITS" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CATEGORY_ID"/>
+      <index name="CATEGORY_ID_UNIQUE" unique="true" columns="CATEGORY_ID"/>
+    </table>
+    <table name="messages" schema="" catalog="librorum" type="TABLE">
+      <column name="MESSAGE_ID" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FROM_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TO_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MESSAGE" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATE_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="READ" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="MESSAGE_ID"/>
+      <index name="MESSAGE_ID_UNIQUE" unique="true" columns="MESSAGE_ID"/>
+    </table>
+    <table name="notifications" schema="" catalog="librorum" type="TABLE">
+      <column name="NOTIFICATION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NOTIFICATION_TYPE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="ITEM_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TO_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="NOTIFICATION_ID"/>
+      <index name="NOTIFICATION_ID_UNIQUE" unique="true" columns="NOTIFICATION_ID"/>
+    </table>
+    <table name="qr_process" schema="" catalog="librorum" type="TABLE">
+      <column name="QR_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TID" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="QR_TYPE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REQUEST_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="QR_ID"/>
+      <index name="QR_ID_UNIQUE" unique="true" columns="QR_ID"/>
+      <index name="TID_UNIQUE" unique="true" columns="TID"/>
+    </table>
+    <table name="requests" schema="" catalog="librorum" type="TABLE">
+      <column name="REQUEST_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="REQUEST_TYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FROM_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ITEM_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="REQUEST_ID"/>
+      <index name="REQUEST_ID_UNIQUE" unique="true" columns="REQUEST_ID"/>
+    </table>
+    <table name="scheduled" schema="" catalog="librorum" type="TABLE">
+      <column name="TASK_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="TASK_ID"/>
+      <index name="TASK_ID_UNIQUE" unique="true" columns="TASK_ID"/>
+    </table>
+    <table name="sessions" schema="" catalog="librorum" type="TABLE">
+      <column name="SESSION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOGIN_TIMESTAMP" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CLIENT_IP" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="SESSION_ID"/>
+      <index name="SESSION_ID_UNIQUE" unique="true" columns="SESSION_ID"/>
+    </table>
+    <table name="sub_categories" schema="" catalog="librorum" type="TABLE">
+      <column name="CATEGORY_ID" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="MAIN_CATEGORY_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SUB_CATEGORY" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CATEGORY_ID"/>
+      <index name="CATEGORY_ID_UNIQUE" unique="true" columns="CATEGORY_ID"/>
+    </table>
+    <table name="user_group_relation" schema="" catalog="librorum" type="TABLE">
+      <column name="RELATION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="GROUP_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="RELATION_ID"/>
+      <index name="RELATION_ID_UNIQUE" unique="true" columns="RELATION_ID"/>
+    </table>
+    <table name="user_settings" schema="" catalog="librorum" type="TABLE">
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="EMAIL_NOTIFS" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12" def="J1RSVUUn"/>
+      <column name="DARK_MODE" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12" def="J0ZBTFNFJw=="/>
+      <primary-key name="PRIMARY" columns="USER_ID"/>
+      <index name="USER_ID_UNIQUE" unique="true" columns="USER_ID"/>
+    </table>
+    <table name="users" schema="" catalog="librorum" type="TABLE">
+      <column name="USER_ID" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="USER_NAME" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOCATION" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="J05PTkUn"/>
+      <column name="DP_LINK" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="J2RlZmF1bHQuanBnJw=="/>
+      <column name="DOB" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="PHONE_NUMBER" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ACCOUNT_STATUS" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="J05FVyc="/>
+      <column name="MESSAGE_VIEW" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="J05PJw=="/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12" def="J05PTkUn"/>
+      <column name="MEMBER_ID" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="USER_ID"/>
+      <index name="EMAIL_ID_UNIQUE" unique="true" columns="EMAIL"/>
+      <index name="ID_UNIQUE" unique="true" columns="USER_ID"/>
+    </table>
+  </data-source>
+</component>
